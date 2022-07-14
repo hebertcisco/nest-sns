@@ -1,10 +1,10 @@
 {
-  "name": "nestjs-lib-boilerplate",
+  "name": "nest-sns",
   "version": "0.0.1",
   "description": "",
   "author": "Hebert Cisco",
   "license": "MIT",
-  "url": "https://github.com/hebertcisco/nestjs-lib-boilerplate#readme",
+  "url": "https://github.com/hebertcisco/nest-sns#readme",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib,test}/**/*.ts\"",
@@ -22,13 +22,20 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
+  "keywords": [
+    "nest",
+    "sns",
+    "aws",
+    "sns-publish"
+  ],
   "dependencies": {
+    "@aws-sdk/client-sns": "^3.128.0",
     "axios": "0.27.2"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-angular": "17.0.3",
-    "@nestjs/common": "8.4.7",
+    "@nestjs/common": "^8.4.7",
     "@nestjs/core": "8.4.7",
     "@nestjs/platform-express": "8.4.7",
     "@nestjs/testing": "^8.4.7",
@@ -68,7 +75,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hebertcisco/nestjs-lib-boilerplate"
+    "url": "https://github.com/hebertcisco/nest-sns"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -1,1 +1,1 @@
-export * from './cat.type';
+export * from './sns.types';

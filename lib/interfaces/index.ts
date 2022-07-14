@@ -1,1 +1,1 @@
-export * from './cat-module.interface';
+export * from './sns-module.interfaces';

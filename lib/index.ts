@@ -1,4 +1,5 @@
-export * from './cat.module';
-export * from './cat.service';
+export * from './sns.module';
+export * from './services/sns.service';
 export * from './interfaces';
+export * from './constants/sns.constants';
 export * from './types';
