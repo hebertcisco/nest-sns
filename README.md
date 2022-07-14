@@ -11,7 +11,7 @@
 [![Free. Built on open source. Runs everywhere.](https://img.shields.io/badge/VS_Code-0078D4?style=flat&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
 [![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white)](https://github.com/hebertcisco/nest-sns/actions)
 
-> This is an Nestjs boilerplate package..
+> Amazon Simple Notification Service module 🌐
 
 ## Installation
 
@@ -30,28 +30,6 @@ npm i nest-sns --save
 ```bash
 # pnpm
 pnpm add nest-sns --save
-```
-
-### Usage example:
-
-```ts
-// common.module.ts
-import { Module } from '@nestjs/common';
-
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { CatModule } from 'nest-sns';
-
-import { CommonService } from './common.service';
-
-@Module({
-  imports: [
-    CatModule.register({
-      message: 'Hello World',
-    }),
-  ],
-  providers: [CommonService],
-})
-export class CommonModule {}
 ```
 
 ## 🤝 Contributing
