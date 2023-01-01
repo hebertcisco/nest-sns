@@ -8,3 +8,9 @@ export type SubscribeCommandOutput = sns.SubscribeCommandOutput;
 
 export type PublishInput = sns.PublishInput;
 export type CreateTopicInput = sns.CreateTopicInput;
+
+export type Credentials = {
+  accessKeyId: string;
+  secretAccessKey: string;
+  sessionToken?: string;
+};
