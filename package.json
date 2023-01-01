@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "description": "Amazon Simple Notification Service module 🌐",
   "author": "Hebert Cisco",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test:watch": "npm test -- --watch",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
