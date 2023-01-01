@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as sns from '@aws-sdk/client-sns';
 
 import { SnsService } from '../../services/sns.service';
-import { SNS_OPTIONS } from '../../constants/sns.constants';
+import { SNS_OPTIONS } from '../../common';
 
-import * as fixtures from '../../common/testing/fixtures';
+import * as fixtures from '../../common';
 
 jest.mock('@aws-sdk/client-sns', () => {
   const mSns = {

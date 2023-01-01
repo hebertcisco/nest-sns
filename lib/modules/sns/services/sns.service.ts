@@ -1,4 +1,4 @@
-import { BadRequestException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 
 import * as sns from '@aws-sdk/client-sns';
 
@@ -6,10 +6,16 @@ import { CreateTopicCommand, PublishCommand, SubscribeCommand } from '@aws-sdk/c
 
 import type { SNSClient, SNSClientConfig } from '@aws-sdk/client-sns';
 
-import { SNS_OPTIONS } from '../constants/sns.constants';
+import { SNS_OPTIONS } from '../common/constants';
 
-import * as snsTypes from '../types/sns.types';
-import type { SendSMSInput } from '../types/sns.types';
+import type {
+  CreateTopicInput,
+  CreateTopicResponse,
+  PublishInput,
+  PublishResponse,
+  SubscribeCommandOutput,
+  SubscribeInput,
+} from '../contract';
 
 @Injectable()
 export class SnsService {
@@ -50,7 +56,7 @@ export class SnsService {
     }
   }
 
-  public async createTopic(input: snsTypes.CreateTopicInput): Promise<snsTypes.CreateTopicResponse> {
+  public async createTopic(input: CreateTopicInput): Promise<CreateTopicResponse> {
     try {
       this.logger.log(`Success[createTopic]: ${JSON.stringify(input)}`);
       return this.snsClient.send(new CreateTopicCommand(input));
@@ -60,7 +66,7 @@ export class SnsService {
     }
   }
 
-  public async publish(input: snsTypes.PublishInput): Promise<snsTypes.PublishResponse> {
+  public async publish(input: PublishInput): Promise<PublishResponse> {
     try {
       this.logger.log(`Success[publish]: ${JSON.stringify(input)}`);
       return this.snsClient.send(new PublishCommand(input));
@@ -69,33 +75,13 @@ export class SnsService {
       throw error;
     }
   }
-  public async subscribe(input: snsTypes.SubscribeInput) {
+  public async subscribe(input: SubscribeInput): Promise<SubscribeCommandOutput> {
     try {
       this.logger.log(`Success[subscribe]: ${JSON.stringify(input)}`);
       return this.snsClient.send(new SubscribeCommand(input));
     } catch (error) {
       this.logger.error('Error[subscribe]:', error);
       throw error;
-    }
-  }
-
-  public async sendSMS(smsOptions: SendSMSInput) {
-    const smsSent = await this.publish(smsOptions);
-    try {
-      this.logger.log(`Success[sendSms]: ${JSON.stringify(smsSent)}`);
-      return {
-        statusCode: HttpStatus.OK,
-        message: 'Sms sent',
-        data: smsSent,
-      };
-    } catch (error) {
-      this.logger.error('Error[sendSms]:', error);
-      throw new BadRequestException({
-        statusCode: HttpStatus.BAD_REQUEST,
-        message: 'Failed to send',
-        data: error,
-        error: error,
-      });
     }
   }
 }
