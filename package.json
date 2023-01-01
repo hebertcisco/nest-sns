@@ -110,25 +110,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hebertcisco/nest-sns"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "lib",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
-  },
-  "bundleDependencies": [
-    "@aws-sdk/client-sns"
-  ]
+  }
 }
