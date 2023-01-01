@@ -40,7 +40,7 @@ The SnsModule is a module that provides the `SnsService` and `SmsService` for se
 
 To use the SnsModule in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the module:
 
-```ts
+```js
 import { SnsModule } from 'nest-sns';
 ```
 
@@ -50,7 +50,7 @@ To use the SnsModule, you will need to register it and provide the necessary AWS
 
 Here is an example of how you can register the SnsModule:
 
-```ts
+```js
 SnsModule.register({
   credentials: {
     accessKeyId: AWS_ACCESS_KEY_ID,
@@ -63,7 +63,7 @@ SnsModule.register({
 
 To use the SnsModule, you will need to inject the `SnsService` or `SmsService` into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
 
-```ts
+```js
 export class YourComponent {
   constructor(private snsService: SnsService) {}
 }
@@ -79,7 +79,7 @@ This service is responsible for sending SMS messages using AWS SNS.
 
 To use the SmsService in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the service:
 
-```ts
+```js
 import { SmsService } from 'nest-sns';
 ```
 
@@ -87,7 +87,7 @@ import { SmsService } from 'nest-sns';
 
 To use the SmsService, you will need to inject it into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
 
-```ts
+```js
 export class YourComponent {   
  constructor(private smsService: SmsService) {} 
 }
@@ -99,7 +99,7 @@ To send an SMS using the SmsService, you can call the `sendSMS` method and pass 
 
 Here is an example of how you can use the `sendSMS` method:
 
-```ts
+```js
 const smsOptions = {
   PhoneNumber: '+1234567890',
   Message: 'Hello, this is a test SMS message.'
@@ -117,7 +117,7 @@ try {
 
 The `SendSMSInput` interface defines the shape of the options object that should be passed to the `sendSMS` method. It contains the following properties:
 
-```ts
+```js
 export type SendSMSInput = {
   Message: string;
   PhoneNumber: string;
@@ -133,7 +133,7 @@ This service is a wrapper for the AWS SNS client, which allows you to create, pu
 
 To use the SnsService in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the service:
 
-```ts
+```js
 import { SnsService } from 'nest-sns';
 ```
 
@@ -141,7 +141,7 @@ import { SnsService } from 'nest-sns';
 
 To use the SnsService, you will need to inject it into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
 
-```ts
+```js
 export class YourComponent {
   constructor(private snsService: SnsService) {}
 }
@@ -153,7 +153,7 @@ To create an SNS topic using the SnsService, you can call the `createTopic` meth
 
 Here is an example of how you can use the `createTopic` method:
 
-```ts
+```js
 const topicOptions = {
   Name: 'my-topic'
 };
@@ -172,7 +172,7 @@ To publish a message to an SNS topic using the SnsService, you can call the `pub
 
 Here is an example of how you can use the `publish` method:
 
-```ts
+```js
 const publishOptions = {
   TopicArn: 'arn:aws:sns:region:account-id:my-topic',
   Message: 'Hello, this is a test message.'
@@ -192,7 +192,7 @@ To subscribe to an SNS topic using the SnsService, you can call the `subscribe` 
 
 Here is an example of how you can use the `subscribe` method:
 
-```ts
+```js
 const subscribeOptions = {
   TopicArn: 'arn:aws:sns:region:account-id:my-topic',
   Protocol: 'email',
@@ -211,7 +211,7 @@ try {
 
 The `CreateTopicInput` interface defines the shape of the options object that should be passed to the `createTopic` method. It contains the following properties:
 
-```ts
+```js
 export interface CreateTopicInput {
   Name: string;
 }
@@ -219,7 +219,7 @@ export interface CreateTopicInput {
 
 The `PublishInput` interface defines the shape of the options object that should be passed to the `publish` method. It contains the following properties:
 
-```ts
+```js
 export interface PublishInput {
   TopicArn: string;
   Message: string;
@@ -229,7 +229,7 @@ export interface PublishInput {
 
 The `SubscribeInput` interface defines the shape of the options object that should be passed to the `subscribe` method. It contains the following properties:
 
-```ts
+```js
 export interface SubscribeInput {
   TopicArn: string;
   Protocol: string;

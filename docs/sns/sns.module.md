@@ -6,7 +6,7 @@ The SnsModule is a module that provides the `SnsService` and `SmsService` for se
 
 To use the SnsModule in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the module:
 
-```ts
+```js
 import { SnsModule } from 'nest-sns';
 ```
 
@@ -16,7 +16,7 @@ To use the SnsModule, you will need to register it and provide the necessary AWS
 
 Here is an example of how you can register the SnsModule:
 
-```ts
+```js
 SnsModule.register({
   credentials: {
     accessKeyId: AWS_ACCESS_KEY_ID,
@@ -29,7 +29,7 @@ SnsModule.register({
 
 To use the SnsModule, you will need to inject the `SnsService` or `SmsService` into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
 
-```ts
+```js
 export class YourComponent {
   constructor(private snsService: SnsService) {}
 }
