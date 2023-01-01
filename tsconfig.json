@@ -15,5 +15,5 @@
     "rootDir": "./lib",
     "skipLibCheck": true
   },
-  "include": ["lib/**/*"]
+  "include": ["dist/**/*"]
 }
