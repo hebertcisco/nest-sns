@@ -6,14 +6,19 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest --config jest.config.js",
-    "test:cov": "npm test -- --coverage",
     "test:watch": "npm test -- --watch",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "npm test -- --config jest-e2e.json",
-    "build": "rimraf -rf dist && tsc -p tsconfig.json",
-    "format": "prettier --write \"{lib,test}/**/*.ts\"",
-    "lint": "eslint 'lib/**/*.ts' --fix",
+    "build": "tsc",
+    "format": "prettier --write \"lib/**/*.(js|ts)\"",
+    "lint": "eslint lib --ext .js,.ts",
+    "lint:fix": "eslint lib --fix --ext .js,.ts",
+    "test": "jest --config jest.config.js",
+    "test:cov": "npm test -- --coverage",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A lib",
+    "postversion": "git push && git push --tags",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
     "prepublish:next": "npm run build",
@@ -21,57 +26,39 @@
     "prerelease": "npm run build",
     "release": "release-it",
     "postformat": "prettier --write \"examples/**/*.(js|ts|md|mjs|cjs)\"",
-    "lint:fix": "eslint src --fix --ext .js,.ts",
-    "prepare": "husky install",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@aws-sdk/client-sns": "^3.241.0"
+    "@aws-sdk/client-sns": "^3.241.0",
+    "dotenv": "^16.0.3",
+    "@nestjs/common": "^9.2.1",
+    "@nestjs/core": "9.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-angular": "17.3.0",
-    "@nestjs/common": "^9.2.1",
-    "@nestjs/core": "9.2.1",
     "@nestjs/platform-express": "9.2.1",
     "@nestjs/testing": "^9.2.1",
-    "@types/jest": "29.2.5",
-    "@types/node": "18.11.18",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.31.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "27.2.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "28.1.6",
+    "@types/node": "^16.18.11",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.31.0",
+    "eslint": "8.30.0",
+    "eslint-plugin-jest": "27.1.6",
     "husky": "8.0.2",
-    "jest": "29.3.1",
-    "lint-staged": "13.1.0",
-    "prettier": "2.8.1",
+    "jest": "28.1.3",
+    "prettier": "^2.8.1",
     "reflect-metadata": "0.1.13",
-    "release-it": "^15.6.0",
     "rimraf": "3.0.2",
     "rxjs": "7.8.0",
-    "ts-jest": "29.0.3",
-    "typescript": "4.9.4"
+    "ts-jest": "28.0.7",
+    "typescript": "4.7.4"
   },
-  "peerDependencies": {
-    "@nestjs/common": "^7.0.0 || ^8.0.0",
-    "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.0.0 || ^7.0.0",
-    "eslint": "7.32.0"
-  },
-  "bundledDependencies": [
-    "@aws-sdk/client-sns"
-  ],
   "files": [
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=16.19",
-    "npm": ">=8.19"
+    "node": ">=16.16",
+    "npm": ">=8.16"
   },
   "os": [
     "!darwin",
@@ -102,12 +89,6 @@
   },
   "license": "MIT",
   "url": "https://github.com/hebertcisco/nest-sns#readme",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/hebertcisco/nest-sns"
