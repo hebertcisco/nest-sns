@@ -25,5 +25,4 @@ export class SnsModule {
       global: isGlobal,
     };
   }
-
 }
