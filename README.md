@@ -62,8 +62,8 @@ Here is an example of how you can use the `sendSMS` method:
 
 ```ts
 const smsOptions = {
-  phoneNumber: '+1234567890',
-  message: 'Hello, this is a test SMS message.'
+  PhoneNumber: '+1234567890',
+  Message: 'Hello, this is a test SMS message.'
 };
 
 try {
