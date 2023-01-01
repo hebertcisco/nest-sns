@@ -1,12 +1,13 @@
 import { ModuleMetadata, Type } from '@nestjs/common';
-import * as sns from '@aws-sdk/client-sns';
+import { SNSClientConfig } from '@aws-sdk/client-sns';
+
 import type { Credentials } from '../types/sns.types';
 
 export interface SnsOptionsFactory {
-  createSnsOptions(): Promise<sns.SNSClientConfig> | sns.SNSClientConfig;
+  createSnsOptions(): Promise<SNSClientConfig> | SNSClientConfig;
 }
 
-export interface SnsOptions {
+export interface SnsOptions extends SNSClientConfig {
   isGlobal?: boolean;
   region?: string;
   credentials: Credentials;
@@ -15,7 +16,7 @@ export interface SnsOptions {
 export interface SnsAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
   useExisting?: Type<SnsOptionsFactory>;
   useClass?: Type<SnsOptionsFactory>;
-  useFactory?: (...args: any[]) => Promise<sns.SNSClientConfig> | sns.SNSClientConfig;
+  useFactory?: (...args: any[]) => Promise<SNSClientConfig> | SNSClientConfig;
   inject?: any[];
   isGlobal?: boolean;
 }
