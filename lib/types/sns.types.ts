@@ -10,7 +10,7 @@ export type PublishInput = sns.PublishInput;
 export type CreateTopicInput = sns.CreateTopicInput;
 
 export type SendSMSInput = {
-    Message: string;
-    PhoneNumber: string;
-    Subject?: string;
-}
+  Message: string;
+  PhoneNumber: string;
+  Subject?: string;
+};

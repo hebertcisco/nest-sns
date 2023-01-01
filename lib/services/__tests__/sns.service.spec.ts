@@ -45,9 +45,7 @@ describe('SnsService', () => {
       };
       await service.createTopic(createTopicInput);
       expect(sns.CreateTopicCommand).toHaveBeenCalledWith(createTopicInput);
-      expect(service.snsClient.send).toHaveBeenCalledWith(
-        new sns.CreateTopicCommand(createTopicInput),
-      );
+      expect(service.client.send).toHaveBeenCalledWith(new sns.CreateTopicCommand(createTopicInput));
     });
   });
   describe('#publish', () => {
@@ -59,9 +57,7 @@ describe('SnsService', () => {
       };
       await service.publish(publishInput);
       expect(sns.PublishCommand).toHaveBeenCalledWith(publishInput);
-      expect(service.snsClient.send).toHaveBeenCalledWith(
-        new sns.PublishCommand(publishInput),
-      );
+      expect(service.client.send).toHaveBeenCalledWith(new sns.PublishCommand(publishInput));
     });
   });
 });

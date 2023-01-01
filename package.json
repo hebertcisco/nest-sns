@@ -10,6 +10,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "npm test -- --config jest-e2e.json",
     "build": "tsc",
+    "prebuild": "rimraf dist",
     "format": "prettier --write \"lib/**/*.(js|ts)\"",
     "lint": "eslint lib --ext .js,.ts",
     "lint:fix": "eslint lib --fix --ext .js,.ts",
@@ -24,15 +25,13 @@
     "prepublish:next": "npm run build",
     "publish:next": "npm publish --access public --tag next",
     "prerelease": "npm run build",
-    "release": "release-it",
-    "postformat": "prettier --write \"examples/**/*.(js|ts|md|mjs|cjs)\"",
     "prepare": "husky install"
   },
   "dependencies": {
     "@aws-sdk/client-sns": "^3.241.0",
-    "dotenv": "^16.0.3",
     "@nestjs/common": "^9.2.1",
-    "@nestjs/core": "9.2.1"
+    "@nestjs/core": "9.2.1",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "@nestjs/platform-express": "9.2.1",

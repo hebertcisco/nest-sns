@@ -2,11 +2,9 @@ import { BadRequestException, HttpStatus, Inject, Injectable, Logger } from '@ne
 
 import * as sns from '@aws-sdk/client-sns';
 
-import {
-  CreateTopicCommand,
-  PublishCommand,
-  SubscribeCommand,
-} from '@aws-sdk/client-sns';
+import { CreateTopicCommand, PublishCommand, SubscribeCommand } from '@aws-sdk/client-sns';
+
+import type { SNSClient, SNSClientConfig } from '@aws-sdk/client-sns';
 
 import { SNS_OPTIONS } from '../constants/sns.constants';
 
@@ -16,13 +14,31 @@ import type { SendSMSInput } from '../types/sns.types';
 @Injectable()
 export class SnsService {
   private logger = new Logger(SnsService.name);
-  public snsClient: sns.SNSClient;
 
-  constructor(@Inject(SNS_OPTIONS) private options: sns.SNSClientConfig) {
+  private snsClient!: SNSClient;
+
+  public constructor(@Inject(SNS_OPTIONS) private snsClientConfig: SNSClientConfig) {
     this.initialize();
   }
 
+  public get client(): SNSClient {
+    return this.snsClient;
+  }
+
+  public set client(client: SNSClient) {
+    this.snsClient = client;
+  }
+
+  public get options(): SNSClientConfig {
+    return this.snsClientConfig;
+  }
+
+  public set options(options: sns.SNSClientConfig) {
+    this.snsClientConfig = options;
+  }
+
   private initialize(): void {
+    this.options = this.snsClientConfig;
     try {
       this.logger.log('Success[initialize]:');
       this.snsClient = new sns.SNSClient({
@@ -34,9 +50,7 @@ export class SnsService {
     }
   }
 
-  public async createTopic(
-    input: snsTypes.CreateTopicInput,
-  ): Promise<snsTypes.CreateTopicResponse> {
+  public async createTopic(input: snsTypes.CreateTopicInput): Promise<snsTypes.CreateTopicResponse> {
     try {
       this.logger.log(`Success[createTopic]: ${JSON.stringify(input)}`);
       return this.snsClient.send(new CreateTopicCommand(input));
@@ -46,9 +60,7 @@ export class SnsService {
     }
   }
 
-  public async publish(
-    input: snsTypes.PublishInput,
-  ): Promise<snsTypes.PublishResponse> {
+  public async publish(input: snsTypes.PublishInput): Promise<snsTypes.PublishResponse> {
     try {
       this.logger.log(`Success[publish]: ${JSON.stringify(input)}`);
       return this.snsClient.send(new PublishCommand(input));
@@ -68,7 +80,7 @@ export class SnsService {
   }
 
   public async sendSMS(smsOptions: SendSMSInput) {
-    const smsSent = await this.publish(smsOptions)
+    const smsSent = await this.publish(smsOptions);
     try {
       this.logger.log(`Success[sendSms]: ${JSON.stringify(smsSent)}`);
       return {

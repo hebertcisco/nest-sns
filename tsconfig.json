@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": false,
+    "strict": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -13,6 +15,5 @@
     "rootDir": "./lib",
     "skipLibCheck": true
   },
-  "include": ["lib/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "tests"]
+  "include": ["lib/**/*"]
 }

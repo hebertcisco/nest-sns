@@ -12,9 +12,7 @@ export interface SnsOptions extends sns.SNSClientConfig {
 export interface SnsAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
   useExisting?: Type<SnsOptionsFactory>;
   useClass?: Type<SnsOptionsFactory>;
-  useFactory?: (
-    ...args: any[]
-  ) => Promise<sns.SNSClientConfig> | sns.SNSClientConfig;
+  useFactory?: (...args: any[]) => Promise<sns.SNSClientConfig> | sns.SNSClientConfig;
   inject?: any[];
   isGlobal?: boolean;
 }
