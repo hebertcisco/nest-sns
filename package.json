@@ -86,7 +86,13 @@
     "nest",
     "sns",
     "aws",
-    "sns-publish"
+    "sns-publish",
+    "sms",
+    "email",
+    "notification",
+    "amazon",
+    "simple",
+    "aws"
   ],
   "lint-staged": {
     "*.ts": [
