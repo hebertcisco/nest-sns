@@ -1,11 +1,18 @@
 # source
 lib
 tests
+
 index.ts
+
 package-lock.json
 tslint.json
+tsconfig.build.json
 tsconfig.json
+
+.gitpod.yml
 .prettierrc
+.husky
+docs
 
 # github
 .github

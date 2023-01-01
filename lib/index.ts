@@ -1,5 +1,6 @@
-export * from './sns.module';
-export * from './services/sns.service';
-export * from './interfaces';
-export * from './constants/sns.constants';
-export * from './types';
+export * from './modules';
+
+export type { SendSMSInput } from './modules';
+
+export * from './modules/sns';
+export * from './modules/sms';
