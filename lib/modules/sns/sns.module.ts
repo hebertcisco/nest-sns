@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 
 import { SnsService } from './services';
 import { SmsService } from '../sms/services/sms.service';
@@ -13,7 +13,7 @@ import type { SnsOptions } from './contract';
   exports: [SnsService, SmsService],
 })
 export class SnsModule {
-  static register(options: SnsOptions): DynamicModule {
+  static register(options: SnsOptions) {
     const { isGlobal, ...snsOptions } = options;
     isGlobal;
     return {
