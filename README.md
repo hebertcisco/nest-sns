@@ -1,6 +1,6 @@
-[![codecov](https://codecov.io/gh/hebertcisco/nest-sns/branch/master/graph/badge.svg?token=NH0SJ8ZG2I)](https://codecov.io/gh/hebertcisco/nest-sns)
+[![codecov](https://codecov.io/gh/hebertcisco/nest-sns/branch/main/graph/badge.svg?token=NH0SJ8ZG2I)](https://codecov.io/gh/hebertcisco/nest-sns)
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/hebertcisco/nest-sns/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/hebertcisco/nest-sns/tree/master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/hebertcisco/nest-sns/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/hebertcisco/nest-sns/tree/main)
 
 [![Node.js build and publish package](https://github.com/hebertcisco/nest-sns/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/hebertcisco/nest-sns/actions/workflows/npm-publish.yml)
 
