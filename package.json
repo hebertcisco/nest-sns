@@ -44,14 +44,14 @@
     "@typescript-eslint/parser": "5.47.1",
     "eslint": "8.31.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest": "27.1.7",
     "husky": "8.0.1",
     "jest": "28.1.2",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
     "reflect-metadata": "0.1.13",
-    "release-it": "15.1.1",
+    "release-it": "^15.6.0",
     "rimraf": "3.0.2",
     "rxjs": "7.5.5",
     "ts-jest": "28.0.5",
@@ -110,5 +110,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hebertcisco/nest-sns"
-  }
+  },
+  "bundleDependencies": [
+    "@aws-sdk/client-sns"
+  ]
 }
