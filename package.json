@@ -1,11 +1,16 @@
 {
   "name": "nest-sns",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Amazon Simple Notification Service module 🌐",
   "author": "Hebert Cisco",
-  "license": "MIT",
-  "url": "https://github.com/hebertcisco/nest-sns#readme",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
+    "test": "jest --config jest.config.js",
+    "test:cov": "npm test -- --coverage",
+    "test:watch": "npm test -- --watch",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "npm test -- --config jest-e2e.json",
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib,test}/**/*.ts\"",
     "lint": "eslint 'lib/**/*.ts' --fix",
@@ -13,21 +18,16 @@
     "publish:npm": "npm publish --access public",
     "prepublish:next": "npm run build",
     "publish:next": "npm publish --access public --tag next",
-    "test:e2e": "jest --config ./tests/jest-e2e.json --runInBand",
     "prerelease": "npm run build",
     "release": "release-it",
-    "prepare": "npm run build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "postformat": "prettier --write \"examples/**/*.(js|ts|md|mjs|cjs)\"",
+    "lint:fix": "eslint src --fix --ext .js,.ts",
+    "prepare": "husky install",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": [
-    "nest",
-    "sns",
-    "aws",
-    "sns-publish"
-  ],
   "dependencies": {
     "@aws-sdk/client-sns": "^3.128.0",
     "axios": "0.27.2"
@@ -62,11 +62,36 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0 || ^7.0.0"
   },
+  "files": [
+    "lib/**/*"
+  ],
+  "engines": {
+    "node": ">=16.19",
+    "npm": ">=8.19"
+  },
+  "os": [
+    "!darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "!arm",
+    "!mips"
+  ],
+  "keywords": [
+    "nest",
+    "sns",
+    "aws",
+    "sns-publish"
+  ],
   "lint-staged": {
     "*.ts": [
       "prettier --write"
     ]
   },
+  "license": "MIT",
+  "url": "https://github.com/hebertcisco/nest-sns#readme",
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS",
