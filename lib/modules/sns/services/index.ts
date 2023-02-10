@@ -1,1 +1,2 @@
-export * from './sns.service';
+export * from './implementations/sns.service';
+export * from './fakes';
