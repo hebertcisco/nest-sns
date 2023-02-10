@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 
 import { SnsService } from './services';
-import { SmsService } from '../sms/services/sms.service';
+import { SmsService } from '../sms';
 
-import { SNS_OPTIONS } from './common/constants';
+import { SNS_OPTIONS } from './common';
 
 import type { SnsOptions } from './contract';
 

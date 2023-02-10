@@ -2,7 +2,7 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 
 import { BadRequestException, Logger } from '@nestjs/common';
 
-import { SnsService } from '../../sns/services';
+import { SnsService } from '../../sns';
 
 import type { SendSMSInput } from '../contract';
 
