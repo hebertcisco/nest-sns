@@ -11,4 +11,3 @@ export * from './modules/sns/sns.module';
 export * from './modules/sms';
 export * from './modules/sms/services';
 export * from './modules/sms/contract';
-export * from './modules/sms/sms.module';
