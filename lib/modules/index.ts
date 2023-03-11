@@ -1,6 +1,7 @@
 export * from './sms';
 export * from './sms/contract';
 export * from './sms/services';
+export * from './sms/sms.module';
 
 export type { SendSMSInput } from './sms';
 

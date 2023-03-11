@@ -1,15 +1,16 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 
 import { SnsService } from './services';
 import { SmsService } from '../sms';
 
 import { SNS_OPTIONS } from './common';
 
+import { SmsModule } from '../sms/sms.module';
 import type { SnsOptions } from './contract';
 
 @Module({
-  imports: [],
-  providers: [SnsService, SmsService],
+  imports: [forwardRef(() => SmsModule)],
+  providers: [SnsService],
   exports: [SnsService, SmsService],
 })
 export class SnsModule {
@@ -22,8 +23,6 @@ export class SnsModule {
           provide: SNS_OPTIONS,
           useValue: snsOptions,
         },
-        SnsService,
-        SmsService,
       ],
       exports: [SnsService, SmsService],
       global: isGlobal,
