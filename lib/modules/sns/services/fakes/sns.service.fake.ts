@@ -44,7 +44,6 @@ export class SnsServiceFake implements SnsServicePort {
     return {
       send: jest.fn(),
     } as unknown as sns.SNSClient;
-
   }
 
   get options(): sns.SNSClientConfig {

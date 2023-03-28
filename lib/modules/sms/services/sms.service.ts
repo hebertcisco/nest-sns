@@ -1,4 +1,4 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpStatus, Inject, Injectable } from '@nestjs/common';
 
 import { BadRequestException, Logger } from '@nestjs/common';
 
@@ -9,7 +9,9 @@ import type { SendSMSInput } from '../contract';
 @Injectable()
 export class SmsService {
   private logger = new Logger(SmsService.name);
+
   public constructor(private snsService: SnsService) {}
+
   public async sendSMS(smsOptions: SendSMSInput) {
     const smsSent = await this.snsService.publish(smsOptions);
     try {
