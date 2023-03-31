@@ -60,13 +60,13 @@
     "npm": ">=8.11"
   },
   "os": [
-    "!darwin",
+    "darwin",
     "linux",
     "win32"
   ],
   "cpu": [
     "x64",
-    "!arm",
+    "arm",
     "!mips"
   ],
   "keywords": [
