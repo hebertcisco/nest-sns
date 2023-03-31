@@ -40,7 +40,7 @@
     "@types/node": "^18.15.10",
     "@typescript-eslint/eslint-plugin": "5.57.0",
     "@typescript-eslint/parser": "5.57.0",
-    "eslint": "8.36.0",
+    "eslint": "8.37.0",
     "eslint-plugin-jest": "27.2.1",
     "husky": "8.0.3",
     "jest": "29.5.0",
@@ -50,7 +50,7 @@
     "rimraf": "4.4.1",
     "rxjs": "7.8.0",
     "ts-jest": "29.0.5",
-    "typescript": "5.0.2"
+    "typescript": "5.0.3"
   },
   "files": [
     "dist/**/*"
@@ -60,13 +60,13 @@
     "npm": ">=8.11"
   },
   "os": [
-    "!darwin",
+    "darwin",
     "linux",
     "win32"
   ],
   "cpu": [
     "x64",
-    "!arm",
+    "arm",
     "!mips"
   ],
   "keywords": [
