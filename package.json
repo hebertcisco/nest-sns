@@ -30,7 +30,7 @@
   "dependencies": {
     "@aws-sdk/client-sns": "^3.300.0",
     "@nestjs/common": "^9.3.12",
-    "@nestjs/core": "9.4.0"
+    "@nestjs/core": "9.4.1"
   },
   "devDependencies": {
     "@nestjs/platform-express": "9.4.0",
