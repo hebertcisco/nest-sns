@@ -10,12 +10,14 @@ import type { SendSMSInput } from '../contract';
 export class SmsService {
   private logger = new Logger(SmsService.name);
 
-  public constructor(private snsService: SnsService) {}
+  public constructor(private snsService: SnsService) { }
 
   public async sendSMS(smsOptions: SendSMSInput) {
     const smsSent = await this.snsService.publish(smsOptions);
+
     try {
       this.logger.log(`Success[sendSms]: ${JSON.stringify(smsSent)}`);
+
       return {
         statusCode: HttpStatus.OK,
         message: 'Sms sent',
@@ -23,6 +25,7 @@ export class SmsService {
       };
     } catch (error) {
       this.logger.error('Error[sendSms]:', error);
+
       throw new BadRequestException({
         statusCode: HttpStatus.BAD_REQUEST,
         message: 'Failed to send',
