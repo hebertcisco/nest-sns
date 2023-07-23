@@ -1,4 +1,4 @@
-import { DynamicModule, forwardRef, InjectionToken, Module, Provider, Type } from '@nestjs/common';
+import { DynamicModule, InjectionToken, Module, Provider, Type } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 
 import { SnsService } from './services';
@@ -9,7 +9,7 @@ import { SNS_INSTANCE_TOKEN, SNS_MODULE_ID, SNS_OPTIONS } from './common';
 import type { SnsAsyncOptions, SnsOptions, SnsOptionsFactory } from './contract';
 
 @Module({
-  providers: [SnsService, { provide: SmsService, useExisting: forwardRef(() => SmsService) }],
+  providers: [SnsService, SmsService],
   exports: [SnsService, SmsService],
 })
 export class SnsModule {
@@ -17,7 +17,7 @@ export class SnsModule {
     const { isGlobal, ...snsOptions } = options;
     return {
       module: SnsModule,
-      // isGlobal: isGlobal,
+      isGlobal: isGlobal,
       providers: [
         {
           provide: SNS_OPTIONS,
@@ -26,6 +26,20 @@ export class SnsModule {
         {
           provide: SNS_MODULE_ID,
           useValue: randomStringGenerator(),
+        },
+        {
+          provide: SNS_INSTANCE_TOKEN,
+          useFactory: (config: SnsOptions) => config,
+          inject: [SNS_OPTIONS],
+        },
+        {
+          provide: SnsService,
+          useFactory: (snsClientConfig: SnsOptions) => new SnsService(snsClientConfig),
+          inject: [SNS_OPTIONS],
+        },
+        {
+          provide: SmsService,
+          useFactory: (snsService: SnsService) => new SmsService(snsService),
         },
       ],
     };
