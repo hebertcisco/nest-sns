@@ -17,7 +17,7 @@ export class SnsModule {
     const { isGlobal, ...snsOptions } = options;
     return {
       module: SnsModule,
-      isGlobal,
+      isGlobal: isGlobal || false,
       providers: [
         {
           provide: SNS_OPTIONS,
