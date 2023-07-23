@@ -9,10 +9,7 @@ import { SNS_INSTANCE_TOKEN, SNS_MODULE_ID, SNS_OPTIONS } from './common';
 import type { SnsAsyncOptions, SnsOptions, SnsOptionsFactory } from './contract';
 
 @Module({
-  providers: [
-    SnsService,
-    { provide: SmsService, useExisting: forwardRef(() => SmsService) },
-  ],
+  providers: [SnsService, { provide: SmsService, useExisting: forwardRef(() => SmsService) }],
   exports: [SnsService, SmsService],
 })
 export class SnsModule {
