@@ -40,7 +40,7 @@ export class SnsModule {
         {
           provide: SmsService,
           useFactory: (snsService: SnsService) => new SmsService(snsService),
-        }
+        },
       ],
     };
   }
