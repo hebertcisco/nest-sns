@@ -35,7 +35,8 @@ jobs:
   
   build-on-macos:
     runs-on: macos-latest
-
+    needs: build-on-ubuntu
+    
     strategy:
       matrix:
         node-version: [16.x, 18.x]
@@ -63,9 +64,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-  build-on-latest:
+  build-on-windows:
     runs-on: windows-latest
-
+    needs: build-on-macos
     strategy:
       matrix:
         node-version: [16.x, 18.x]
