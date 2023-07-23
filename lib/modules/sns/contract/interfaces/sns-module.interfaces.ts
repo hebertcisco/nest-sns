@@ -19,5 +19,4 @@ export interface SnsAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
   useFactory?: (...args: any[]) => Promise<SNSClientConfig> | SNSClientConfig;
   inject?: any[];
   isGlobal?: boolean;
-  extraProviders: any;
 }
