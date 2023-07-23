@@ -9,7 +9,10 @@ import { SNS_INSTANCE_TOKEN, SNS_MODULE_ID, SNS_OPTIONS } from './common';
 import type { SnsAsyncOptions, SnsOptions, SnsOptionsFactory } from './contract';
 
 @Module({
-  providers: [SnsService, { provide: SmsService, useFactory: () => forwardRef(() => require('./sms.service').SmsService) }],
+  providers: [
+    SnsService,
+    { provide: SmsService, useFactory: () => forwardRef(() => require('./sms.service').SmsService) },
+  ],
   exports: [SnsService, SmsService],
 })
 export class SnsModule {
@@ -17,6 +20,7 @@ export class SnsModule {
     const { isGlobal, ...snsOptions } = options;
     return {
       module: SnsModule,
+      isGlobal: isGlobal,
       providers: [
         {
           provide: SNS_OPTIONS,
