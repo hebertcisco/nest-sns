@@ -1,4 +1,4 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
+import { DynamicModule, InjectionToken, Module, Provider } from '@nestjs/common';
 
 import { SnsService } from './services';
 import { SmsService } from '../sms';
@@ -42,15 +42,14 @@ export class SnsModule {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncOptionsProvider(options)];
     }
-    return [
-      this.createAsyncOptionsProvider(options),
+    const providers = [
       {
-        // @ts-ignore
-        provide: options.useClass,
-        // @ts-ignore
-        useClass: options.useClass,
+        provide: SNS_OPTIONS,
+        useFactory: async (optionsFactory: SnsOptionsFactory) => await optionsFactory.createSnsOptions(),
+        inject: [options.useExisting || options.useClass],
       },
     ];
+    return providers as Provider[];
   }
 
   private static createAsyncOptionsProvider(options: SnsAsyncOptions): Provider {
@@ -64,8 +63,7 @@ export class SnsModule {
     return {
       provide: SNS_OPTIONS,
       useFactory: async (optionsFactory: SnsOptionsFactory) => await optionsFactory.createSnsOptions(),
-      // @ts-ignore
-      inject: [options.useExisting || options.useClass],
+      inject: [(options.useExisting as InjectionToken) || (options.useClass as InjectionToken)],
     };
   }
 }
