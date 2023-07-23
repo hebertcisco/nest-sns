@@ -11,7 +11,7 @@ import type { SnsAsyncOptions, SnsOptions, SnsOptionsFactory } from './contract'
 @Module({
   providers: [
     SnsService,
-    { provide: SmsService, useFactory: () => forwardRef(() => require('./sms.service').SmsService) },
+    { provide: SmsService, useExisting: forwardRef(() => SmsService) },
   ],
   exports: [SnsService, SmsService],
 })
@@ -20,7 +20,7 @@ export class SnsModule {
     const { isGlobal, ...snsOptions } = options;
     return {
       module: SnsModule,
-      isGlobal: isGlobal,
+      // isGlobal: isGlobal,
       providers: [
         {
           provide: SNS_OPTIONS,
