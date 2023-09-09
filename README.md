@@ -34,19 +34,26 @@ pnpm add nest-sns --save
 
 ### SnsModule
 
-The SnsModule is a module that provides the `SnsService` and `SmsService` for sending SMS messages using AWS SNS.
+The SnsModule is a module that provides the `SnsService` and `SmsService` for
+sending SMS messages using AWS SNS.
 
 #### Importing the module
 
-To use the SnsModule in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the module:
+To use the SnsModule in your NestJS application, you will need to import it. You
+can do this by adding the following line to the top of the file where you want
+to use the module:
 
 ```js
-import { SnsModule } from 'nest-sns';
+import { SnsModule } from "nest-sns";
 ```
 
 #### Registering the module
 
-To use the SnsModule, you will need to register it and provide the necessary AWS SNS credentials. You can do this by calling the `register` method and passing it an object containing the `credentials` property. The `register` method returns an object that you can use to include the module in the `imports` array of the root AppModule or the module where you want to use it.
+To use the SnsModule, you will need to register it and provide the necessary AWS
+SNS credentials. You can do this by calling the `register` method and passing it
+an object containing the `credentials` property. The `register` method returns
+an object that you can use to include the module in the `imports` array of the
+root AppModule or the module where you want to use it.
 
 Here is an example of how you can register the SnsModule:
 
@@ -61,7 +68,9 @@ SnsModule.register({
 
 #### Using the module
 
-To use the SnsModule, you will need to inject the `SnsService` or `SmsService` into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
+To use the SnsModule, you will need to inject the `SnsService` or `SmsService`
+into your component or controller. You can do this by adding it to the
+constructor arguments and adding a public or private property for it:
 
 ```js
 export class YourComponent {
@@ -69,7 +78,9 @@ export class YourComponent {
 }
 ```
 
-You can then use the `snsService` or `smsService` to perform the necessary operations, such as creating an SNS topic, publishing to a topic, or subscribing to a topic.
+You can then use the `snsService` or `smsService` to perform the necessary
+operations, such as creating an SNS topic, publishing to a topic, or subscribing
+to a topic.
 
 ### SmsService
 
@@ -77,15 +88,19 @@ This service is responsible for sending SMS messages using AWS SNS.
 
 #### Importing the SmsService
 
-To use the SmsService in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the service:
+To use the SmsService in your NestJS application, you will need to import it.
+You can do this by adding the following line to the top of the file where you
+want to use the service:
 
 ```js
-import { SmsService } from 'nest-sns';
+import { SmsService } from "nest-sns";
 ```
 
 #### Injecting the SmsService
 
-To use the SmsService, you will need to inject it into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
+To use the SmsService, you will need to inject it into your component or
+controller. You can do this by adding it to the constructor arguments and adding
+a public or private property for it:
 
 ```js
 export class YourComponent {   
@@ -95,14 +110,17 @@ export class YourComponent {
 
 #### Sending an SMS
 
-To send an SMS using the SmsService, you can call the `sendSMS` method and pass it an object containing the SMS options. The `sendSMS` method returns a Promise that resolves to an object with a `statusCode`, `message`, and `data` properties.
+To send an SMS using the SmsService, you can call the `sendSMS` method and pass
+it an object containing the SMS options. The `sendSMS` method returns a Promise
+that resolves to an object with a `statusCode`, `message`, and `data`
+properties.
 
 Here is an example of how you can use the `sendSMS` method:
 
 ```js
 const smsOptions = {
-  PhoneNumber: '+1234567890',
-  Message: 'Hello, this is a test SMS message.'
+  PhoneNumber: "+1234567890",
+  Message: "Hello, this is a test SMS message.",
 };
 
 try {
@@ -115,7 +133,8 @@ try {
 
 #### Interfaces and Types
 
-The `SendSMSInput` interface defines the shape of the options object that should be passed to the `sendSMS` method. It contains the following properties:
+The `SendSMSInput` interface defines the shape of the options object that should
+be passed to the `sendSMS` method. It contains the following properties:
 
 ```js
 export type SendSMSInput = {
@@ -127,19 +146,24 @@ export type SendSMSInput = {
 
 ### SnsService
 
-This service is a wrapper for the AWS SNS client, which allows you to create, publish, and subscribe to AWS SNS topics.
+This service is a wrapper for the AWS SNS client, which allows you to create,
+publish, and subscribe to AWS SNS topics.
 
 #### Importing the SnsService
 
-To use the SnsService in your NestJS application, you will need to import it. You can do this by adding the following line to the top of the file where you want to use the service:
+To use the SnsService in your NestJS application, you will need to import it.
+You can do this by adding the following line to the top of the file where you
+want to use the service:
 
 ```js
-import { SnsService } from 'nest-sns';
+import { SnsService } from "nest-sns";
 ```
 
 #### Injecting the SnsService
 
-To use the SnsService, you will need to inject it into your component or controller. You can do this by adding it to the constructor arguments and adding a public or private property for it:
+To use the SnsService, you will need to inject it into your component or
+controller. You can do this by adding it to the constructor arguments and adding
+a public or private property for it:
 
 ```js
 export class YourComponent {
@@ -149,13 +173,16 @@ export class YourComponent {
 
 #### Creating an SNS Topic
 
-To create an SNS topic using the SnsService, you can call the `createTopic` method and pass it an object containing the topic options. The `createTopic` method returns a Promise that resolves to an object with the `TopicArn` property, which is the Amazon Resource Name (ARN) of the created topic.
+To create an SNS topic using the SnsService, you can call the `createTopic`
+method and pass it an object containing the topic options. The `createTopic`
+method returns a Promise that resolves to an object with the `TopicArn`
+property, which is the Amazon Resource Name (ARN) of the created topic.
 
 Here is an example of how you can use the `createTopic` method:
 
 ```js
 const topicOptions = {
-  Name: 'my-topic'
+  Name: "my-topic",
 };
 
 try {
@@ -168,14 +195,17 @@ try {
 
 #### Publishing to an SNS Topic
 
-To publish a message to an SNS topic using the SnsService, you can call the `publish` method and pass it an object containing the publish options. The `publish` method returns a Promise that resolves to an object with the `MessageId` property, which is the ID of the message that was published.
+To publish a message to an SNS topic using the SnsService, you can call the
+`publish` method and pass it an object containing the publish options. The
+`publish` method returns a Promise that resolves to an object with the
+`MessageId` property, which is the ID of the message that was published.
 
 Here is an example of how you can use the `publish` method:
 
 ```js
 const publishOptions = {
-  TopicArn: 'arn:aws:sns:region:account-id:my-topic',
-  Message: 'Hello, this is a test message.'
+  TopicArn: "arn:aws:sns:region:account-id:my-topic",
+  Message: "Hello, this is a test message.",
 };
 
 try {
@@ -188,15 +218,18 @@ try {
 
 #### Subscribing to an SNS Topic
 
-To subscribe to an SNS topic using the SnsService, you can call the `subscribe` method and pass it an object containing the subscribe options. The `subscribe` method returns a Promise that resolves to an object with the `SubscriptionArn` property, which is the ARN of the subscription.
+To subscribe to an SNS topic using the SnsService, you can call the `subscribe`
+method and pass it an object containing the subscribe options. The `subscribe`
+method returns a Promise that resolves to an object with the `SubscriptionArn`
+property, which is the ARN of the subscription.
 
 Here is an example of how you can use the `subscribe` method:
 
 ```js
 const subscribeOptions = {
-  TopicArn: 'arn:aws:sns:region:account-id:my-topic',
-  Protocol: 'email',
-  Endpoint: 'my-email@example.com'
+  TopicArn: "arn:aws:sns:region:account-id:my-topic",
+  Protocol: "email",
+  Endpoint: "my-email@example.com",
 };
 
 try {
@@ -209,7 +242,9 @@ try {
 
 #### Interfaces for SNS Options
 
-The `CreateTopicInput` interface defines the shape of the options object that should be passed to the `createTopic` method. It contains the following properties:
+The `CreateTopicInput` interface defines the shape of the options object that
+should be passed to the `createTopic` method. It contains the following
+properties:
 
 ```js
 export interface CreateTopicInput {
@@ -217,7 +252,8 @@ export interface CreateTopicInput {
 }
 ```
 
-The `PublishInput` interface defines the shape of the options object that should be passed to the `publish` method. It contains the following properties:
+The `PublishInput` interface defines the shape of the options object that should
+be passed to the `publish` method. It contains the following properties:
 
 ```js
 export interface PublishInput {
@@ -227,7 +263,9 @@ export interface PublishInput {
 }
 ```
 
-The `SubscribeInput` interface defines the shape of the options object that should be passed to the `subscribe` method. It contains the following properties:
+The `SubscribeInput` interface defines the shape of the options object that
+should be passed to the `subscribe` method. It contains the following
+properties:
 
 ```js
 export interface SubscribeInput {
@@ -239,7 +277,8 @@ export interface SubscribeInput {
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check
+[issues page](issues).
 
 ## Show your support
 
@@ -253,5 +292,5 @@ Or buy me a coffee 🙌🏾
 
 ## 📝 License
 
-Copyright © 2023 [Hebert F Barros](https://github.com/hebertcisco).<br />
-This project is [MIT](LICENSE) licensed.
+Copyright © 2023 [Hebert F Barros](https://github.com/hebertcisco).<br /> This
+project is [MIT](LICENSE) licensed.
