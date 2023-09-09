@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as sns from '@aws-sdk/client-sns';
 
 import { SnsService, SnsServiceFake } from '../services';
-import { mPublishCommand, SNS_OPTIONS } from '../common';
+import { SNS_OPTIONS } from '../common';
 
 import * as fixtures from '../common';
 import { SnsServicePort } from '../ports';
