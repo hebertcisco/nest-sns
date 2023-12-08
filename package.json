@@ -47,7 +47,7 @@
     "jest-cucumber": "^3.0.1",
     "nest-sns": "^0.3.2",
     "prettier": "^3.0.0",
-    "reflect-metadata": "0.1.13",
+    "reflect-metadata": "0.1.14",
     "rimraf": "5.0.5",
     "rxjs": "7.8.1",
     "ts-jest": "29.1.1",
