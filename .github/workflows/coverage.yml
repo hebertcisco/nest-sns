@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20x]
 
     steps:
       - name: Checkout repository
@@ -35,8 +35,10 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
@@ -48,7 +50,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20x]
 
     steps:
       - name: Checkout repository
@@ -66,8 +68,10 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
@@ -78,7 +82,7 @@ jobs:
     needs: build-on-macos
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20x]
 
     steps:
       - name: Checkout repository
@@ -96,8 +100,10 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
