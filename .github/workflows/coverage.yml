@@ -1,6 +1,7 @@
 name: Running Code Coverage
 
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - opened
