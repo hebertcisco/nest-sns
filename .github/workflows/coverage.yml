@@ -50,7 +50,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20x]
+        node-version: [lts/gallium, lts/hydrogen, lts/iron]
 
     steps:
       - name: Checkout repository
@@ -82,7 +82,7 @@ jobs:
     needs: build-on-macos
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20x]
+        node-version: [lts/gallium, lts/hydrogen, lts/iron]
 
     steps:
       - name: Checkout repository
