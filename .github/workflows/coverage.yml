@@ -8,8 +8,8 @@ on:
       - reopened
       - ready_for_review
     branches:
-      - 'main'
-      - 'develop'
+      - "main"
+      - "develop"
 
 jobs:
   build-on-ubuntu:
@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20x]
+        node-version: [lts/gallium, lts/hydrogen, lts/iron]
 
     steps:
       - name: Checkout repository
@@ -35,19 +35,19 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-  
+
   build-on-macos:
     runs-on: macos-latest
     needs: build-on-ubuntu
-    
+
     strategy:
       matrix:
         node-version: [16.x, 18.x, 20x]
@@ -68,10 +68,10 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
@@ -100,10 +100,10 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-      
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
