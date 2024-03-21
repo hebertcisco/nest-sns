@@ -1,6 +1,6 @@
 {
   "name": "nest-sns",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Amazon Simple Notification Service module 🌐",
   "author": "Hebert Cisco",
   "main": "dist/index.js",
