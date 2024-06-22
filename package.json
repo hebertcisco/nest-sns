@@ -1,6 +1,6 @@
 {
   "name": "nest-sns",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Amazon Simple Notification Service module 🌐",
   "author": "Hebert Cisco",
   "main": "dist/index.js",
@@ -51,7 +51,7 @@
     "rimraf": "5.0.7",
     "rxjs": "7.8.1",
     "ts-jest": "29.1.5",
-    "typescript": "5.4.5"
+    "typescript": "5.5.2"
   },
   "files": [
     "dist/**/*"
